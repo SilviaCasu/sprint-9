@@ -1,44 +1,29 @@
 <template>
-    <div class="inputList">
-      <div class="row mb-1">
-        <div class="col-10">
-          <textarea
-            v-model="ingredient"
-            class="form-control"
-            id="exampleFormControlInput1"
-            placeholder="Type your ingredient and press Enter or click Add"
-            @keydown.enter.prevent="addIngredient"
-          ></textarea>
-        </div>
-        <div class="col-2">
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="button-addon2"
-            @click="addIngredient"
-            :disabled="!ingredient.trim()"
-          >
-            Add
-          </button>
-          <button
-            class="btn btn-outline-secondary"
-            type="button"
-            id="button-addon2"
-            @click="deleteLastIngredient"
-            :disabled="ingredients.length === 0"
-          >
-            Delete
-          </button>
-        </div>
+  <div class="inputList">
+    <div class="row mb-1">
+      <div class="col-10">
+        <textarea v-model="ingredient" class="form-control" id="exampleFormControlInput1"
+          @keydown.enter.prevent="addIngredient"></textarea>
       </div>
-      <ul>
-        <li v-for="(ingredient, index) in ingredients" :key="index">{{ ingredient }}</li>
-      </ul>
+      <div class="col-2">
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="addIngredient"
+          :disabled="!ingredient.trim()">
+          Añadir
+        </button>
+        <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="deleteLastIngredient"
+          :disabled="ingredients.length === 0">
+          Cancelar
+        </button>
+      </div>
     </div>
-  </template>
+    <ul>
+      <li v-for="(ingredient, index) in ingredients" :key="index">{{ ingredient }}</li>
+    </ul>
+  </div>
+</template>
   
-  <script>
-  export default {
+<script>
+export default {
   name: "InputList",
   props: {
     value: {
@@ -59,25 +44,25 @@
     },
   },
   methods: {
-  addIngredient() {
-    if (this.ingredient.trim()) {
-      this.ingredients.push(this.ingredient);
-      this.ingredient = '';
+    addIngredient() {
+      if (this.ingredient.trim()) {
+        this.ingredients.push(this.ingredient);
+        this.ingredient = '';
+        console.log('ingredients:', this.ingredients); // Mostrar ingredients en la consola
+        this.$emit('update-ingredientes', this.ingredients);
+      }
+    },
+    deleteLastIngredient() {
+      this.ingredients.pop();
       console.log('ingredients:', this.ingredients); // Mostrar ingredients en la consola
       this.$emit('update-ingredientes', this.ingredients);
     }
-  },
-  deleteLastIngredient() {
-    this.ingredients.pop();
-    console.log('ingredients:', this.ingredients); // Mostrar ingredients en la consola
-    this.$emit('update-ingredientes', this.ingredients);
   }
-}
 
 
 };
 
-  </script>
+</script>
   
-  <style></style>
+<style></style>
   

@@ -6,11 +6,15 @@ const routes = [
   {
     path: '/',
     name: 'home',
+    
     component: () => import(/* webpackChunkName: "home" */ '../views/Home.vue')
   },
   {
     path: '/recetas',
     name: 'recetas',
+    meta: {
+      requiresAuth: true,
+    },
     component: () => import(/* webpackChunkName: "recetas" */ '../views/Recetas.vue')
   },
 
@@ -26,6 +30,12 @@ const routes = [
     
     component: () => import(/* webpackChunkName: "informaciones" */ '../views/Informaciones.vue')
   },
+  {
+    path: '/celiaquia',
+    name: 'celiaquia',
+    
+    component: () => import(/* webpackChunkName: "celiaquia" */ '../views/Celiaquia.vue')
+  },
 
 {
   path: '/admin',
@@ -36,13 +46,19 @@ const routes = [
   
   component: () => import(/* webpackChunkName: "admin" */ '../components/Admin/Admin.vue')
 },
-{
-  path: '/loginAdmin',
-  name: 'loginAdmin',
-  
-  component: () => import(/* webpackChunkName: "loginAdmin" */ '../components/Admin/LoginAdmin.vue')
-},
 
+{
+path: '/register',
+name: 'register',
+
+component: () => import(/* webpackChunkName: "register" */ '../components/Register.vue')
+},
+{
+  path: '/login',
+  name: 'login',
+  
+  component: () => import(/* webpackChunkName: "login" */ '../components/Login.vue')
+  },
 
 
 ]
@@ -58,9 +74,10 @@ router.beforeEach((to, from, next) => {
   const currentUser = firebase.auth().currentUser;
 
   if (requiresAuth && !currentUser) {
-    next('/loginAdmin');
+    next('/login');
   } else {
     next();
   }
 });
+
 export default router

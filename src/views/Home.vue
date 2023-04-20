@@ -7,12 +7,12 @@
     </div>
     <div class="row">
       <div class="col-md-1 ">
-        <!-- col sinistra -->
+
       </div>
       <div class="col-md-10  min-height-100 p-3">
 
         <div class="row  p-3">
-          <div class="col-md-3 p-3 border">
+          <div class="col-md-3 p-3 ">
             <!-- col destra-->
             <div v-if="weatherData">
 
@@ -20,16 +20,21 @@
             </div>
             <div v-else>
             </div>
+            <div class="row border border-success mt-3 mb-3"></div>
 
-            <h2> Quis autem vel </h2>
-            <p class="testo">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-            nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-            esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-         </p>
+            <h4> Noticias </h4>
+            <p class="testo">La Federación de Asociaciones de Celiacos de España (FACE) y las asociaciones de celiacos
+              trabajan para crear estrategias que permitan mejorar el diagnóstico precoz en la atención primaria,
+              desarrollando para ello herramientas que amplíen el conocimiento sobre esta enfermedad.<br>
+              Puedes leer el articulo en la web oficial de 
+              <a href="https://celiacos.org/face-distribuye-carteles-en-centros-de-salud-para-potenciar-el-diagnostico-precoz-de-la-enfermedad-celiaca/" target="_blank">FACE</a>
+            </p>
+            <div class="row border border-success mt-3 mb-3"></div>
+
           </div>
 
-          <div class="col-md-6 p-3 border">
-            <h2>Nuestra última receta sin gluten </h2> <br>
+          <div class="col-md-6 p-3 border-start border-end">
+            <h2>Si aún no lo has hecho, registrate para ver todas las recetas sin gluten </h2> <br>
             <div v-if="ultimaReceta">
               <h3>{{ ultimaReceta.titulo }}</h3>
               <p>{{ ultimaReceta.texto }}</p>
@@ -37,21 +42,25 @@
             </div>
           </div>
 
-          <div class="col-md-3 p-3 border">
+          <div class="col-md-3 p-3">
 
-            <!-- col destra--> 
-            <h3>Últimas noticias</h3>
-            <p class="testo">Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam,
-            nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit
-            esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?"
-         </p> </div>
+            <!-- col destra-->
+            <h3>Todavia no hay ayuda ecomonica para los celiacos</h3>
+            <p class="testo">En 2021, el Ministerio de Consumo de España anunció un proyecto de ley para garantizar la
+              seguridad alimentaria de las personas con alergias e intolerancias alimentarias, que incluye a las personas
+              con enfermedad celíaca. <br>La ley establece medidas para mejorar la información y la formación de los
+              profesionales de la alimentación, así como para garantizar el acceso a alimentos seguros y sin gluten.<br>
+              Pero aún no se habla del derecho a las ayudas publicas para comprar alimentos básicos sin gluten, de momento
+              la única terapia existente.
+            </p>
+          </div>
 
         </div>
 
       </div>
 
       <div class="col-md-1">
-     
+
       </div>
     </div>
     <div class="row">
@@ -124,6 +133,14 @@ h3 {
   padding-bottom: 10px;
 
 }
+h4 {
+  font-family: Tahoma, sans-serif;
+  font-size: 1em;
+  color: #10b67e;
+  padding-bottom: 10px;
+  font-weight: bold;
+
+}
 
 h2 {
   font-family: Tahoma, sans-serif;
@@ -146,7 +163,29 @@ h2 {
   max-width: 100%;
   height: auto;
 }
-.testo{
+
+.testo {
   text-align: left;
 }
+
+a {
+  color: #dc3545;
+}
+
+a:hover {
+  color: rgb(7, 151, 50);
+}
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+a:active {
+  color: rgb(7, 151, 50);
+  
+  text-decoration: none;
+}
+
 </style>

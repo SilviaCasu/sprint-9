@@ -17,15 +17,16 @@
             <li class="nav-item">
               <router-link to="/informaciones" class="nav-link active" aria-current="page">Informaciones útiles  |</router-link>
             </li>
-           
+            <li class="nav-item">
+              <router-link to="/celiaquia" class="nav-link active" aria-current="page">Celiaquía y gluten  |</router-link>
+            </li>
             <li>
-              <router-link :to="{ name: 'loginAdmin' }" class="nav-link active" aria-current="page">
-                Área de Administración del Sitio
+              <router-link :to="{ name: 'login' }" class="nav-link active" aria-current="page">
+                Área de Administración
               </router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled"></a>
-            </li>
+        
+           
           </ul>
         </div>
       </div>

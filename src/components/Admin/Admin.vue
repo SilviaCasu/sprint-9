@@ -4,10 +4,10 @@
       <div class="cabecera">
         <Cabecera />
       </div>
-
-      <div class="text-end">
-        <button @click="logout()" class="btn btn-dark">Logout</button>
-      </div>
+      <div class="row">
+        <div class="col-md-1 "> </div>
+        <div class="col-md-10  min-height-100 p-3">
+     
       <div class="row mt-5 mb-3 ">
         <div class="inputTitle text-start">
           <label class="form-label text-start"> Insertar titulo</label>
@@ -40,13 +40,16 @@
       </div>
       <div class="row mb-3">
         <div class="inputFile text-start">
-          <label class="form-label">Seleccionar imagen</label>
+          <label class="form-label">Seleccionar imagen</label><br>
           <input type="file" @change="handleFileSelect($event)" />
         </div>
-      </div>
-      <button @click="guardarRecetas()" class="btn btn-success">Guardar recetas</button>
-      <button @click="resetForm" class="btn btn-danger">Reset</button>
-
+      </div></div></div>
+      <button @click="guardarRecetas()" class="btn btn-success " type="button">Guardar recetas</button>
+      <button @click="resetForm ()" class="btn btn-danger">Reset</button>
+    </div>
+    <div class="col-md-1 mt-3"> </div>
+    <div class="row">
+      <div class="col-12 bg-dark min-height-100 text-white"> ESGLURP - TEMPTING FOOD</div>
     </div>
   </div>
 </template>
@@ -55,7 +58,7 @@
 import Cabecera from '@/components/Cabecera.vue'
 import InputComp from '@/components/Admin/InputComp.vue'
 import InputSelect from '@/components/Admin/InputSelect.vue'
-import LoginAdmin from '@/components/Admin/LoginAdmin.vue'
+import Login from '@/components/Login.vue'
 import InputList from '@/components/Admin/InputList.vue'
 import 'firebase/compat/storage'
 import { db, storage } from '@/main.js';
@@ -69,7 +72,7 @@ export default {
     InputComp,
     InputSelect,
     InputList,
-    LoginAdmin
+    Login
   },
   data() {
     return {
@@ -95,12 +98,12 @@ export default {
       titulo: this.titulo,
       texto: this.texto,
       procedimiento: this.procedimiento,
-      ingredientes: this.ingredientes, // obtener la propiedad "ingredientes" de la instancia del componente
+      ingredientes: this.ingredientes, 
       categoria: this.selectedCategories || '',
       images: downloadURLs
     };
     
-    console.log('nuevaReceta:', nuevaReceta); // Mostrar nuevaReceta en la consola
+    console.log('nuevaReceta:', nuevaReceta); 
 
     const docRef = await db.collection('recetas').add(nuevaReceta);
     console.log('Receta guardada con ID: ', docRef.id);
@@ -138,13 +141,7 @@ export default {
       console.log('downloadURL:', downloadURL);
       return downloadURL;
     },
-    logout() {
-  firebase.auth().signOut().then(() => {
-    this.$router.push('/');
-  }).catch((error) => {
-    console.log('Error al cerrar sesión: ', error);
-  });
-},
+    
 resetForm() {
     this.titulo = '';
     this.texto = '';

@@ -4,7 +4,7 @@
       <div class="col-10">
         <div class="input-group">
           <select class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon" v-model="selectedCategory" @change="saveCategory" multiple>
-            <option value="" disabled>Selezionare le categorie</option>
+            <option value="" disabled>Seleciona las categorias</option>
             <option value="Entrante">Entrante</option>
             <option value="Pasta">Pasta</option>
             <option value="Carne">Carne</option>
